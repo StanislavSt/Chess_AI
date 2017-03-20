@@ -15,13 +15,13 @@ namespace Chess_CSharp
         public Form1()
         { 
             InitializeComponent();
-            this.Size = new System.Drawing.Size(620, 640);
+            this.Size = new System.Drawing.Size(420, 440);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             const int tileSize = 50;
-            const int gridSize = 12;
+            const int gridSize = 8;
             var clr1 = Color.Black;
             var clr2 = Color.White;
 
