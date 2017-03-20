@@ -38,7 +38,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.AutoValidateChanged += new System.EventHandler(this.m);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseHover += new System.EventHandler(this.Form1_MouseHover);
             this.ResumeLayout(false);
 
         }

@@ -10,10 +10,10 @@ namespace Chess_CSharp
 {
     class ChessBoard
     {
-            private const int tileSize = 50;
+            private const int tileSize = 60;
             private const int gridSize = 8;
-            private Color clr1 = Color.Black;
-            private Color clr2 = Color.White;
+            private Color colorGrey= Color.DarkSlateGray;
+            private Color colorWhite= Color.White;
             private Panel[,] chessBoardPanels;
             public Panel[,] ChessBoardPanels
             {
@@ -48,11 +48,52 @@ namespace Chess_CSharp
 
                         //Color the panels
                         if (i % 2 == 0)
-                            newPanel.BackColor = j % 2 != 0 ? clr1 : clr2;
+                            newPanel.BackColor = j % 2 != 0 ? colorGrey : colorWhite;
                         else
-                            newPanel.BackColor = j % 2 != 0 ? clr2 : clr1;
+                            newPanel.BackColor = j % 2 != 0 ? colorWhite : colorGrey;
                     }
                 }
-            }  
+            }
+        /// <summary>
+        /// Draws each piece on the chess board
+        /// </summary>
+        public void DrawPieces()
+        {
+            for(int i = 0 ; i < gridSize ; i ++ )
+            {
+                for(int j = 0 ; j < gridSize ; j++)
+                {
+                    switch(j)
+                    {
+                        case 0 :
+                            chessBoardPanels[0, j].BackgroundImage = Properties.Resources.Chess_Black_Rook;
+                            chessBoardPanels[7, j].BackgroundImage = Properties.Resources.Chess_Black_Rook;
+                            chessBoardPanels[1, j].BackgroundImage = Properties.Resources.Chess_Black_Knight;
+                            chessBoardPanels[6, j].BackgroundImage = Properties.Resources.Chess_Black_Knight;
+                            chessBoardPanels[2, j].BackgroundImage = Properties.Resources.Chess_Black_Bishop;
+                            chessBoardPanels[5, j].BackgroundImage = Properties.Resources.Chess_Black_Bishop;
+                            chessBoardPanels[3, j].BackgroundImage = Properties.Resources.Chess_Black_King;
+                            chessBoardPanels[4, j].BackgroundImage = Properties.Resources.Chess_Black_Queen;
+                            break;
+                        case 1 : 
+                            chessBoardPanels[i, j].BackgroundImage = Properties.Resources.Chess_Black_Pawn;
+                            break;
+                        case 6 :
+                            chessBoardPanels[i, j].BackgroundImage = Properties.Resources.Chess_White_Pawn;
+                            break;
+                        case 7 : 
+                            chessBoardPanels[0, j].BackgroundImage = Properties.Resources.Chess_White_Rook;
+                            chessBoardPanels[7, j].BackgroundImage = Properties.Resources.Chess_White_Rook;
+                            chessBoardPanels[1, j].BackgroundImage = Properties.Resources.Chess_White_Knight;
+                            chessBoardPanels[6, j].BackgroundImage = Properties.Resources.Chess_White_Knight;
+                            chessBoardPanels[2, j].BackgroundImage = Properties.Resources.Chess_White_Bishop;
+                            chessBoardPanels[5, j].BackgroundImage = Properties.Resources.Chess_White_Bishop;
+                            chessBoardPanels[3, j].BackgroundImage = Properties.Resources.Chess_White_King;
+                            chessBoardPanels[4, j].BackgroundImage = Properties.Resources.Chess_White_Queen;
+                            break;
+                    }   
+                }
+            }
+        }
     }
 }
