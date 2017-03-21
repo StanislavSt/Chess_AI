@@ -95,5 +95,17 @@ namespace Chess_CSharp
                 }
             }
         }
+
+        public bool movePiece(Panel firstPanel, Panel secondPanel)
+        {
+            if (firstPanel.BackgroundImage != null)
+            {
+                secondPanel.BackgroundImage = firstPanel.BackgroundImage;
+                firstPanel.BackgroundImage = null;
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }
