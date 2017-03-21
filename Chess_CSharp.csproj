@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chess\ChessBoard.cs" />
+    <Compile Include="Chess\ChessMove.cs" />
     <Compile Include="Chess\ChessPiece.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

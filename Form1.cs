@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Chess_CSharp.Chess;
 
 namespace Chess_CSharp
 {
@@ -28,7 +29,7 @@ namespace Chess_CSharp
             {
                 if (temp != null)
                 {
-                    cb.movePiece(temp, sender as Panel);
+                    ChessMove.movePiece(temp, sender as Panel);
                     temp = null;
                 }
                 else if((sender as Panel).BackgroundImage != null)
