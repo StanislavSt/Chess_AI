@@ -18,7 +18,7 @@ namespace Chess_CSharp
         public Form1()
         { 
             InitializeComponent();
-            this.Size = new System.Drawing.Size(495, 510);
+            this.Size = new System.Drawing.Size(495, 515);
         }
         /// <summary>
         /// Custom event handler for the panels
@@ -27,14 +27,26 @@ namespace Chess_CSharp
         {
             if(sender is Panel)
             {
+                var panel = (Panel)sender;
                 if (temp != null)
                 {
-                    ChessMove.movePiece(temp, sender as Panel);
+                    ChessMove.movePiece(temp, panel);
                     temp = null;
                 }
-                else if((sender as Panel).BackgroundImage != null)
-                    temp = sender as Panel;
+                else if(panel.BackgroundImage != null)
+                {
+                    temp = panel;
+                    using (var panelGraphics = CreateGraphics())
+                    {
+                        var paintEventArgs = new PaintEventArgs(panel.CreateGraphics(),panel.ClientRectangle);
+                        Panel_DrawBorder(panel, paintEventArgs);
+                    }
+                }             
             }
+        }
+        private void Panel_DrawBorder(object sender, PaintEventArgs p)
+        {
+            ControlPaint.DrawBorder(p.Graphics, (sender as Panel).ClientRectangle, Color.LawnGreen,ButtonBorderStyle.Solid);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
