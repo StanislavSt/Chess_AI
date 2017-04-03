@@ -10,6 +10,7 @@ namespace Chess_CSharp
     {
         private ChessPieceColor color;
         private ChessPieceType type;
+        private Location location;
         /// <summary>
         /// return the color of the chess piece
         /// </summary>
@@ -17,8 +18,17 @@ namespace Chess_CSharp
         {
             get { return color; }
         }
-        public ChessPiece(ChessPieceColor color, ChessPieceType type)
+        public Location getLocation
         {
+            get { return location; }
+        }
+        public ChessPieceType getType
+        {
+            get { return type; }
+        }
+        public ChessPiece(ChessPieceColor color, ChessPieceType type, Location location)
+        {
+            this.location = location;
             this.color = color;
             this.type = type;
         }

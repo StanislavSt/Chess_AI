@@ -163,6 +163,7 @@ namespace Chess_CSharp
                 {
                     DrawPieces();
                     (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game();
+                    (form as Form1).playerLabel.Text = "Current turn: White";
                 }
 
             };
@@ -177,6 +178,16 @@ namespace Chess_CSharp
         {
             string[] coordinates = panel.Name.Split(',');
             return cg.getChessboard[Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1])];
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="panel"></param>
+        /// <returns></returns>
+        public static Location getLocationOfPanel(Panel panel)
+        {
+            string[] coordinates = panel.Name.Split(',');
+            return new Location(Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1]));
         }
     }
 }

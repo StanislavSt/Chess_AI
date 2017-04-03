@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chess\ChessPiece.cs" />
+    <Compile Include="Chess\LegalMove.cs" />
+    <Compile Include="Chess\Location.cs" />
     <Compile Include="Form\ChessBoard.cs" />
     <Compile Include="Chess\ChessPieceColor.cs" />
     <Compile Include="Chess\ChessMove.cs" />
@@ -73,6 +75,7 @@
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

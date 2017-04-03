@@ -9,14 +9,15 @@ namespace Chess_CSharp
     public class ChessMove
     {
         public ChessPiece chesspiece;
-        public int StartPosition;
-        public int EndPosition;
-        public MoveType movetype;
-        public ChessMove(ChessPiece piece, int startPosition, int endPosition, MoveType move)
+        public ChessPieceColor player;
+        public Location startposition;
+        public Location endposition;
+        public ChessMove(ChessPiece piece, Location startposition, Location endposition)
         {
-            chesspiece = piece;
-            StartPosition = startPosition;
-            EndPosition = endPosition;
+            this.chesspiece = piece;
+            this.startposition = startposition;
+            this.endposition = endposition;
+            this.player = piece.getColor;
         }
     }
 }

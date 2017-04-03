@@ -30,6 +30,10 @@ namespace Chess_CSharp.Engine
             movelist = new List<ChessMove>();
 
         }
+        /// <summary>
+        /// Add all ChessPieces to the chess board
+        /// </summary>
+        /// <param name="cb">the chessboard</param>
         private void initializeChessBoard(ChessPiece[,] cb)
         {
             for (int i = 0; i < 8; i++)
@@ -38,33 +42,33 @@ namespace Chess_CSharp.Engine
                 {
                     if( j == 0)
                     {
-                        cb[0, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Rook);
-                        cb[7, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Rook);
-                        cb[1, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Knight);
-                        cb[6, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Knight);
-                        cb[2, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Bishop);
-                        cb[5, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Bishop);
-                        cb[3, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.King);
-                        cb[4, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Queen);
+                        cb[0, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Rook, new Location(0,j));
+                        cb[7, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Rook, new Location(7,j));
+                        cb[1, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Knight,new Location(1,j));
+                        cb[6, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Knight,new Location(6,j));
+                        cb[2, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Bishop,new Location(2,j));
+                        cb[5, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Bishop,new Location(5,j));
+                        cb[3, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.King,new Location(3,j));
+                        cb[4, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Queen,new Location(4,j));
                     }
                     else if(j == 1)
                     {
-                        cb[i, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Pawn);
+                        cb[i, j] = new ChessPiece(ChessPieceColor.Black, ChessPieceType.Pawn,new Location(i,j));
                     }
                     else if(j == 6)
                     {
-                        cb[i, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Pawn);
+                        cb[i, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Pawn,new Location(i,j));
                     }
                     else if(j == 7)
                     {
-                        cb[0, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Rook);
-                        cb[7, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Rook);
-                        cb[1, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Knight);
-                        cb[6, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Knight);
-                        cb[2, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Bishop);
-                        cb[5, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Bishop);
-                        cb[3, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.King);
-                        cb[4, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Queen);
+                        cb[0, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Rook,new Location(0,j));
+                        cb[7, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Rook,new Location(7,j));
+                        cb[1, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Knight,new Location(1,j));
+                        cb[6, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Knight,new Location(6,j));
+                        cb[2, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Bishop,new Location(2,j));
+                        cb[5, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Bishop,new Location(5,j));
+                        cb[3, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.King,new Location(3,j));
+                        cb[4, j] = new ChessPiece(ChessPieceColor.White, ChessPieceType.Queen,new Location(4,j));
                     }
                 }
             }
@@ -82,7 +86,7 @@ namespace Chess_CSharp.Engine
                     else
                         whosturn = ChessPieceColor.White;
                     //Update the array 
-                    //We store the coordinates in the panel's name
+                    //We can access the coordinates from the panel's name
                     string[] fpcoordinates = firstPanel.Name.Split(',');
                     string[] spcoordinates = secondPanel.Name.Split(',');
                     chessboard[Convert.ToInt32(spcoordinates[0]), Convert.ToInt32(spcoordinates[1])] = chessboard[Convert.ToInt32(fpcoordinates[0]), Convert.ToInt32(fpcoordinates[1])];
@@ -95,6 +99,24 @@ namespace Chess_CSharp.Engine
             else
                 return false;
             
+        }
+        public bool IsMoveLegal(ChessMove chessmove)
+        {
+            Location startlocation = chessmove.startposition;
+            Location endlocation = chessmove.endposition;
+            ChessPiece chesspiece = chessmove.chesspiece;
+
+            if(chesspiece.getType == ChessPieceType.Pawn)
+            {
+                if (LegalMove.IsPawnMove(chesspiece, startlocation, endlocation,this.getChessboard))
+                    return true;
+            }
+            else if(chesspiece.getType == ChessPieceType.Rook)
+            {
+                if(LegalMove.IsRookMove(chesspiece,startlocation,endlocation,this.getChessboard))
+                    return true;
+            }
+            return false;
         }
     }
 }
