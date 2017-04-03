@@ -44,18 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chess\ChessBoard.cs" />
-    <Compile Include="Chess\ChessMove.cs" />
     <Compile Include="Chess\ChessPiece.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Form\ChessBoard.cs" />
+    <Compile Include="Chess\ChessPieceColor.cs" />
+    <Compile Include="Chess\ChessMove.cs" />
+    <Compile Include="Chess\ChessPieceType.cs" />
+    <Compile Include="Chess\MoveType.cs" />
+    <Compile Include="Engine\Chess_Game.cs" />
+    <Compile Include="Engine\SearchEngine.cs" />
+    <Compile Include="Engine\SearchEngineAlphaBeta.cs" />
+    <Compile Include="Engine\SearchEngineMinMax.cs" />
+    <Compile Include="Form\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Form\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Form\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -63,6 +71,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

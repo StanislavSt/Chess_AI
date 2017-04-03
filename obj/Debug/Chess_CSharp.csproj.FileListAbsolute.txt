@@ -1,27 +1,9 @@
-C:\Users\Stanislav\Documents\Visual Studio 2013\Projects\Chess_CSharp_solution\Chess_CSharp\bin\Debug\Chess_CSharp.exe.config
-C:\Users\Stanislav\Documents\Visual Studio 2013\Projects\Chess_CSharp_solution\Chess_CSharp\bin\Debug\Chess_CSharp.exe
-C:\Users\Stanislav\Documents\Visual Studio 2013\Projects\Chess_CSharp_solution\Chess_CSharp\bin\Debug\Chess_CSharp.pdb
-C:\Users\Stanislav\Documents\Visual Studio 2013\Projects\Chess_CSharp_solution\Chess_CSharp\obj\Debug\Chess_CSharp.csprojResolveAssemblyReference.cache
-C:\Users\Stanislav\Documents\Visual Studio 2013\Projects\Chess_CSharp_solution\Chess_CSharp\obj\Debug\Chess_CSharp.Form1.resources
-C:\Users\Stanislav\Documents\Visual Studio 2013\Projects\Chess_CSharp_solution\Chess_CSharp\obj\Debug\Chess_CSharp.Properties.Resources.resources
-C:\Users\Stanislav\Documents\Visual Studio 2013\Projects\Chess_CSharp_solution\Chess_CSharp\obj\Debug\Chess_CSharp.csproj.GenerateResource.Cache
-C:\Users\Stanislav\Documents\Visual Studio 2013\Projects\Chess_CSharp_solution\Chess_CSharp\obj\Debug\Chess_CSharp.exe
-C:\Users\Stanislav\Documents\Visual Studio 2013\Projects\Chess_CSharp_solution\Chess_CSharp\obj\Debug\Chess_CSharp.pdb
-C:\Users\Stanislav\Desktop\Chess c#\Chess_AI\bin\Debug\Chess_CSharp.exe.config
-C:\Users\Stanislav\Desktop\Chess c#\Chess_AI\obj\Debug\Chess_CSharp.exe
-C:\Users\Stanislav\Desktop\Chess c#\Chess_AI\obj\Debug\Chess_CSharp.pdb
-C:\Users\Stanislav\Desktop\Chess c#\Chess_AI\bin\Debug\Chess_CSharp.exe
-C:\Users\Stanislav\Desktop\Chess c#\Chess_AI\bin\Debug\Chess_CSharp.pdb
-C:\Users\Stanislav\Desktop\Chess c#\Chess_AI\obj\Debug\Chess_CSharp.csprojResolveAssemblyReference.cache
-C:\Users\Stanislav\Desktop\Chess c#\Chess_AI\obj\Debug\Chess_CSharp.Form1.resources
-C:\Users\Stanislav\Desktop\Chess c#\Chess_AI\obj\Debug\Chess_CSharp.Properties.Resources.resources
-C:\Users\Stanislav\Desktop\Chess c#\Chess_AI\obj\Debug\Chess_CSharp.csproj.GenerateResource.Cache
-C:\Users\Stanislav\Desktop\C# chess\Chess_AI\bin\Debug\Chess_CSharp.exe.config
-C:\Users\Stanislav\Desktop\C# chess\Chess_AI\obj\Debug\Chess_CSharp.exe
-C:\Users\Stanislav\Desktop\C# chess\Chess_AI\obj\Debug\Chess_CSharp.pdb
-C:\Users\Stanislav\Desktop\C# chess\Chess_AI\bin\Debug\Chess_CSharp.exe
-C:\Users\Stanislav\Desktop\C# chess\Chess_AI\bin\Debug\Chess_CSharp.pdb
-C:\Users\Stanislav\Desktop\C# chess\Chess_AI\obj\Debug\Chess_CSharp.csprojResolveAssemblyReference.cache
-C:\Users\Stanislav\Desktop\C# chess\Chess_AI\obj\Debug\Chess_CSharp.Form1.resources
-C:\Users\Stanislav\Desktop\C# chess\Chess_AI\obj\Debug\Chess_CSharp.Properties.Resources.resources
-C:\Users\Stanislav\Desktop\C# chess\Chess_AI\obj\Debug\Chess_CSharp.csproj.GenerateResource.Cache
+C:\Users\Stanislav\Desktop\My_Chess\Another_Csharp\bin\Debug\Chess_CSharp.exe.config
+C:\Users\Stanislav\Desktop\My_Chess\Another_Csharp\obj\Debug\Chess_CSharp.exe
+C:\Users\Stanislav\Desktop\My_Chess\Another_Csharp\obj\Debug\Chess_CSharp.pdb
+C:\Users\Stanislav\Desktop\My_Chess\Another_Csharp\obj\Debug\Chess_CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Stanislav\Desktop\My_Chess\Another_Csharp\obj\Debug\Chess_CSharp.Form1.resources
+C:\Users\Stanislav\Desktop\My_Chess\Another_Csharp\obj\Debug\Chess_CSharp.Properties.Resources.resources
+C:\Users\Stanislav\Desktop\My_Chess\Another_Csharp\obj\Debug\Chess_CSharp.csproj.GenerateResource.Cache
+C:\Users\Stanislav\Desktop\My_Chess\Another_Csharp\bin\Debug\Chess_CSharp.exe
+C:\Users\Stanislav\Desktop\My_Chess\Another_Csharp\bin\Debug\Chess_CSharp.pdb

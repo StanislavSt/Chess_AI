@@ -3,27 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace Chess_CSharp.Chess
+namespace Chess_CSharp
 {
-    public static class ChessMove
+    public class ChessMove
     {
-        public static bool movePiece(Panel firstPanel, Panel secondPanel)
+        public ChessPiece chesspiece;
+        public int StartPosition;
+        public int EndPosition;
+        public MoveType movetype;
+        public ChessMove(ChessPiece piece, int startPosition, int endPosition, MoveType move)
         {
-            if (firstPanel.BackgroundImage != null)
-            {
-                secondPanel.BackgroundImage = firstPanel.BackgroundImage;
-                firstPanel.BackgroundImage = null;
-                return true;
-            }
-            else
-                return false;
-        }
-        public static bool moveIsLegal()
-        {
-            //To be implemented
-            return true;
+            chesspiece = piece;
+            StartPosition = startPosition;
+            EndPosition = endPosition;
         }
     }
 }

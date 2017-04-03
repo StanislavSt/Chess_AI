@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Chess_CSharp.ChessBoard">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAQABAAAQAAAAAAIAggAEAQAAIAACAAAgAAAAAAAAA=</HashCode>
+      <FileName>Chess\ChessBoard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Form1" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Chess_CSharp.ChessMove">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEQEAABAAAAAAAAAAAAAAgAAAAAAAAAEBAAAAA=</HashCode>
+      <FileName>Chess\ChessMove.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MoveType" />
+      <Property Name="ChessPiece" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Chess_CSharp.Form1">
+    <Position X="10" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAgAAAACACAACAAAAgACAAAQAAAAAAAA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess_CSharp.Engine.Chess_Game">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAEAAAAAAEIAAAACAAAAAAAAAAE=</HashCode>
+      <FileName>Engine\Chess_Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ChessMove" />
+      <Property Name="ChessBoard" />
+      <Property Name="ChessColor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Chess_CSharp.Engine.SearchEngine" Collapsed="true">
+    <Position X="2" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\SearchEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess_CSharp.Engine.SearchEngineAlphaBeta" Collapsed="true">
+    <Position X="0.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\SearchEngineAlphaBeta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess_CSharp.Engine.SearchEngineMinMax" Collapsed="true">
+    <Position X="3" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\SearchEngineMinMax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess_CSharp.Program" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess_CSharp.Properties.Resources" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACEAAAAAAAAAAAAAOAABGKQEAQAAAMBAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess_CSharp.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Chess_CSharp.ChessColor">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Chess\ChessColor.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Chess_CSharp.ChessPiece">
+    <Position X="4.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAEggAAAAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Chess\ChessPiece.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Chess_CSharp.MoveType">
+    <Position X="6.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABEEAAAIAAAEAAAAAAAAABAAAQIAIAAAAAAAAAABAA=</HashCode>
+      <FileName>Chess\MoveType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

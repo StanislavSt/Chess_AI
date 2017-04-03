@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace Chess_CSharp
 {
-    public enum ChessPiece
+    public class ChessPiece
     {
-        Pawn,
-        Bishop,
-        Knight,
-        Rook,
-        Queen,
-        King
+        private ChessPieceColor color;
+        private ChessPieceType type;
+        /// <summary>
+        /// return the color of the chess piece
+        /// </summary>
+        public ChessPieceColor getColor
+        {
+            get { return color; }
+        }
+        public ChessPiece(ChessPieceColor color, ChessPieceType type)
+        {
+            this.color = color;
+            this.type = type;
+        }
     }
 }
