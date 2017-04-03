@@ -188,5 +188,80 @@ namespace Chess_CSharp
             }
             return false;
         }
+        public static bool IsBishopMove(ChessPiece piece, Location startlocation, Location newlocation, ChessPiece[,] chessboard)
+        {
+            var givenDirection = GetDirection(startlocation, newlocation);
+            var fields = GetMovement(givenDirection, startlocation, newlocation);
+            bool isThereSomething = fields.Any(loc => loc.column == newlocation.column && loc.row == newlocation.row);
+            var thereIsSomething = fields.Select(pole => chessboard[pole.column, pole.row] != null).Any(x => x);
+
+            return !thereIsSomething && isThereSomething;
+        }
+
+        private static List<Location> GetMovement(BishopDirectionType bishopDirectionType, Location startlocation, Location endLocation)
+        {
+            int row = startlocation.row;
+            int column = startlocation.column;
+            List<Location> combos = new List<Location>();
+            switch (bishopDirectionType)
+            {
+                case BishopDirectionType.NorthEast:
+                    while (row >= endLocation.row && column <= endLocation.column)
+                    {
+                        combos.Add(new Location(column, row));
+                        row--;
+                        column++;
+                    }
+                    break;
+                case BishopDirectionType.NorthWest:
+                    while (row >= endLocation.row && column >= endLocation.column)
+                    {
+                        combos.Add(new Location(column, row));
+                        row--;
+                        column--;
+                    }
+                    break;
+                case BishopDirectionType.SouthEast:
+                    while (row <= endLocation.row && column <= endLocation.column)
+                    {
+                        combos.Add(new Location(column, row));
+                        row++;
+                        column++;
+                    }
+                    break;
+                case BishopDirectionType.SouthWest:
+                    while (row <= endLocation.row && column >= endLocation.column)
+                    {
+                        combos.Add(new Location(column, row));
+                        row++;
+                        column--;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return combos.Where(loc => loc.column != startlocation.column && loc.row != startlocation.row).ToList();
+        }
+
+        private static BishopDirectionType GetDirection(Location startLocation, Location newLocation)
+        {
+            if (startLocation.row < newLocation.row && startLocation.column < newLocation.column)
+            {
+                return BishopDirectionType.SouthEast;
+            }
+            if (startLocation.row < newLocation.row && startLocation.column > newLocation.column)
+            {
+                return BishopDirectionType.SouthWest;
+            }
+            if (startLocation.row > newLocation.row && startLocation.column < newLocation.column)
+            {
+                return BishopDirectionType.NorthEast;
+            }
+            if (startLocation.row > newLocation.row && startLocation.column > newLocation.column)
+            {
+                return BishopDirectionType.NorthWest;
+            }
+            return BishopDirectionType.None;
+        }
     }
 }

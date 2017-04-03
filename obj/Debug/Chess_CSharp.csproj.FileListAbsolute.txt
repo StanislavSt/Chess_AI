@@ -16,3 +16,6 @@ D:\D\Fontys\second year\procp\gitProcp\Chess_AI\obj\Debug\Chess_CSharp.csprojRes
 D:\D\Fontys\second year\procp\gitProcp\Chess_AI\obj\Debug\Chess_CSharp.Form1.resources
 D:\D\Fontys\second year\procp\gitProcp\Chess_AI\obj\Debug\Chess_CSharp.Properties.Resources.resources
 D:\D\Fontys\second year\procp\gitProcp\Chess_AI\obj\Debug\Chess_CSharp.csproj.GenerateResource.Cache
+C:\Users\Jak Benev\Desktop\ProCP Chess Game Sync\Chess_AI\bin\Debug\Chess_CSharp.exe.config
+C:\Users\Jak Benev\Desktop\ProCP Chess Game Sync\Chess_AI\obj\Debug\Chess_CSharp.exe
+C:\Users\Jak Benev\Desktop\ProCP Chess Game Sync\Chess_AI\obj\Debug\Chess_CSharp.pdb
