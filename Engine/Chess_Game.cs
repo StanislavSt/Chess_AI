@@ -116,6 +116,11 @@ namespace Chess_CSharp.Engine
                 if(LegalMove.IsRookMove(chesspiece,startlocation,endlocation,this.getChessboard))
                     return true;
             }
+            else if (chesspiece.getType == ChessPieceType.Knight)
+            {
+                if (LegalMove.IsKnightMove(chesspiece, startlocation, endlocation, this.getChessboard))
+                    return true;
+            }
             return false;
         }
     }

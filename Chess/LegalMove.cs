@@ -119,5 +119,74 @@ namespace Chess_CSharp
             }
             return false;
         }
+        public static bool IsKnightMove(ChessPiece piece, Location startlocation, Location newlocation, ChessPiece[,] chessboard)
+        {
+            int row = startlocation.row;
+            int column = startlocation.column;
+            //White knight
+            if (piece.getColor == ChessPieceColor.White)
+            {
+                //knight move
+                if (
+                    ((row - newlocation.row == 1
+                    && (column == newlocation.column - 2 || column == newlocation.column + 2)
+                    || (row - newlocation.row == -1
+                    && (column == newlocation.column - 2 || column == newlocation.column + 2)))
+                    || (row - newlocation.row == 2
+                    && (column == newlocation.column - 1 || column == newlocation.column + 1))
+                    || (row - newlocation.row == -2
+                    && (column == newlocation.column - 1 || column == newlocation.column + 1)))
+                    && chessboard[newlocation.column, newlocation.row] == null)
+                    return true;
+                //En passant
+                else if ((row - newlocation.row == -1 || row - newlocation.row == 1)
+                    && chessboard[newlocation.column, newlocation.row] != null
+                    && chessboard[newlocation.column, newlocation.row].getColor != ChessPieceColor.White
+                    )
+                {
+                    if (column - newlocation.column == -2 || column - newlocation.column == 2)
+                        return true;
+                }
+                else if ((row - newlocation.row == -2 || row - newlocation.row == 2)
+                    && chessboard[newlocation.column, newlocation.row] != null
+                    && chessboard[newlocation.column, newlocation.row].getColor != ChessPieceColor.White)
+                {
+                    if (column - newlocation.column == -1 || column - newlocation.column == 1)
+                        return true;
+                }
+            }
+            //Black knight
+            else
+            {
+                if (
+                    ((row - newlocation.row == 1
+                    && (column == newlocation.column - 2 || column == newlocation.column + 2)
+                    || (row - newlocation.row == -1
+                    && (column == newlocation.column - 2 || column == newlocation.column + 2)))
+                    || (row - newlocation.row == 2
+                    && (column == newlocation.column - 1 || column == newlocation.column + 1))
+                    || (row - newlocation.row == -2
+                    && (column == newlocation.column - 1 || column == newlocation.column + 1)))
+                    && chessboard[newlocation.column, newlocation.row] == null)
+                    return true;
+                //En passant
+                else if ((row - newlocation.row == -1 || row - newlocation.row == 1)
+                    && chessboard[newlocation.column, newlocation.row] != null
+                    && chessboard[newlocation.column, newlocation.row].getColor != ChessPieceColor.Black
+                    )
+                {
+                    if (column - newlocation.column == -2 || column - newlocation.column == 2)
+                        return true;
+                }
+                else if ((row - newlocation.row == -2 || row - newlocation.row == 2)
+                    && chessboard[newlocation.column, newlocation.row] != null
+                    && chessboard[newlocation.column, newlocation.row].getColor != ChessPieceColor.Black)
+                {
+                    if (column - newlocation.column == -1 || column - newlocation.column == 1)
+                        return true;
+                }
+            }
+            return false;
+        }
     }
 }
