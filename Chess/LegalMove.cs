@@ -119,6 +119,35 @@ namespace Chess_CSharp
             }
             return false;
         }
+        public static bool IsKingMove(ChessPiece piece, Location startlocation, Location newlocation, ChessPiece[,] chessboard)
+        {
+            int row = startlocation.row;
+            int column = startlocation.column;
+            //Check if new location is a legal move
+            if (chessboard[newlocation.column, newlocation.row] != null
+                && chessboard[newlocation.column, newlocation.row].getColor == piece.getColor)
+                return false;
+            //Move up and down
+            else if (column == newlocation.column)
+            {
+                if (row - newlocation.row == 1 || row - newlocation.row == -1)
+                    return true;
+            }
+            //Move left and righte
+            else if (row == newlocation.row)
+            {
+                if (column - newlocation.column == 1 || column - newlocation.column == -1)
+                    return true;
+            }
+            //Move diagonal
+            else if ((newlocation.column == startlocation.column - 1 && newlocation.row == startlocation.row + 1)
+                || (newlocation.column == startlocation.column - 1 && newlocation.row == startlocation.row - 1)
+                || (newlocation.column == startlocation.column + 1 && newlocation.row == startlocation.row + 1)
+                || (newlocation.column == startlocation.column + 1 && newlocation.row == startlocation.row - 1))
+                return true;
+
+            return false;
+        }
         public static bool IsKnightMove(ChessPiece piece, Location startlocation, Location newlocation, ChessPiece[,] chessboard)
         {
             int row = startlocation.row;

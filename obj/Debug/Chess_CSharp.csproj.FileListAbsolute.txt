@@ -25,3 +25,12 @@ C:\Users\Jak Benev\Desktop\ProCP Chess Game Sync\Chess_AI\obj\Debug\Chess_CSharp
 C:\Users\Jak Benev\Desktop\ProCP Chess Game Sync\Chess_AI\obj\Debug\Chess_CSharp.Form1.resources
 C:\Users\Jak Benev\Desktop\ProCP Chess Game Sync\Chess_AI\obj\Debug\Chess_CSharp.Properties.Resources.resources
 C:\Users\Jak Benev\Desktop\ProCP Chess Game Sync\Chess_AI\obj\Debug\Chess_CSharp.csproj.GenerateResource.Cache
+C:\Users\pepsi\Desktop\CHESSS\Chess_AI\bin\Debug\Chess_CSharp.exe.config
+C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.exe
+C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.pdb
+C:\Users\pepsi\Desktop\CHESSS\Chess_AI\bin\Debug\Chess_CSharp.exe
+C:\Users\pepsi\Desktop\CHESSS\Chess_AI\bin\Debug\Chess_CSharp.pdb
+C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.csprojResolveAssemblyReference.cache
+C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.Form1.resources
+C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.Properties.Resources.resources
+C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.csproj.GenerateResource.Cache
