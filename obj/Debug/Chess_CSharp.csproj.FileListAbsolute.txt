@@ -34,3 +34,12 @@ C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.csprojResolveAssem
 C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.Form1.resources
 C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.Properties.Resources.resources
 C:\Users\pepsi\Desktop\CHESSS\Chess_AI\obj\Debug\Chess_CSharp.csproj.GenerateResource.Cache
+C:\Users\Stanislav\Desktop\Chess c# Fontys\Chess_AI\bin\Debug\Chess_CSharp.exe.config
+C:\Users\Stanislav\Desktop\Chess c# Fontys\Chess_AI\obj\Debug\Chess_CSharp.exe
+C:\Users\Stanislav\Desktop\Chess c# Fontys\Chess_AI\obj\Debug\Chess_CSharp.pdb
+C:\Users\Stanislav\Desktop\Chess c# Fontys\Chess_AI\bin\Debug\Chess_CSharp.exe
+C:\Users\Stanislav\Desktop\Chess c# Fontys\Chess_AI\bin\Debug\Chess_CSharp.pdb
+C:\Users\Stanislav\Desktop\Chess c# Fontys\Chess_AI\obj\Debug\Chess_CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Stanislav\Desktop\Chess c# Fontys\Chess_AI\obj\Debug\Chess_CSharp.Form1.resources
+C:\Users\Stanislav\Desktop\Chess c# Fontys\Chess_AI\obj\Debug\Chess_CSharp.Properties.Resources.resources
+C:\Users\Stanislav\Desktop\Chess c# Fontys\Chess_AI\obj\Debug\Chess_CSharp.csproj.GenerateResource.Cache

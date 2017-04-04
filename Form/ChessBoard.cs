@@ -174,18 +174,25 @@ namespace Chess_CSharp
             //    Location = new Point(325, 620)
             //};
         }
+        /// <summary>
+        /// Return the piece on the given panel
+        /// </summary>
+        /// <param name="panel">Panel</param>
+        /// <param name="cg">chess game</param>
+        /// <returns>a ChessPiece object</returns>
         public static ChessPiece getPieceOnPanel(Panel panel, Chess_Game cg )
         {
             string[] coordinates = panel.Name.Split(',');
             return cg.getChessboard[Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1])];
         }
         /// <summary>
-        /// 
+        /// Get the location of the selected panel
         /// </summary>
-        /// <param name="panel"></param>
-        /// <returns></returns>
+        /// <param name="panel">Panel</param>
+        /// <returns>Location object</returns>
         public static Location getLocationOfPanel(Panel panel)
         {
+            //We store the location of the panel in the name
             string[] coordinates = panel.Name.Split(',');
             return new Location(Convert.ToInt32(coordinates[0]), Convert.ToInt32(coordinates[1]));
         }

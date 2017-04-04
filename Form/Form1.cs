@@ -82,6 +82,11 @@ namespace Chess_CSharp
         {
             ControlPaint.DrawBorder(p.Graphics, (sender as Panel).ClientRectangle, Color.LawnGreen,ButtonBorderStyle.Solid);
         }
+        /// <summary>
+        /// Undraw the green border
+        /// </summary>
+        /// <param name="sender">Panel to be undrawn</param>
+        /// <param name="p">Paint event arguments</param>
         private void Panel_UndrawBorder(Panel sender,PaintEventArgs p )
         {
             if (sender.BackColor == Color.DarkSlateGray)
@@ -89,7 +94,6 @@ namespace Chess_CSharp
             else
                 ControlPaint.DrawBorder(p.Graphics, (sender as Panel).ClientRectangle, Color.White, ButtonBorderStyle.Solid);
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
            //Draw the panels and buttons
@@ -106,6 +110,7 @@ namespace Chess_CSharp
             };
             Controls.Add(playerLabel);
             Chess_CSharp.Engine.Chess_Game chessgame = new Chess_CSharp.Engine.Chess_Game();
+            Text = "Chess Game";
         }
     }
 }

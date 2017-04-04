@@ -12,12 +12,17 @@ namespace Chess_CSharp.Engine
         private ChessPiece[,] chessboard;
         private List<ChessMove> movelist;
         private ChessPieceColor whosturn;
-
+        /// <summary>
+        /// Who is currently playing
+        /// </summary>
         public ChessPieceColor Whosturn
         {
             get {return whosturn;}
             set {whosturn = value;}
         }
+        /// <summary>
+        /// return the chessboard
+        /// </summary>
         public ChessPiece[,] getChessboard
         {
             get { return chessboard; }
@@ -73,6 +78,11 @@ namespace Chess_CSharp.Engine
                 }
             }
         }
+        /// <summary>
+        /// Move the piece
+        /// </summary>
+        /// <param name="piece">Chess piece</param>
+        /// <returns>true if the move was successful </returns>
         public bool movePiece(ChessPiece piece, Panel firstPanel, Panel secondPanel)
         {
             if (piece.getColor == whosturn)
@@ -100,6 +110,11 @@ namespace Chess_CSharp.Engine
                 return false;
             
         }
+        /// <summary>
+        /// Check if the chessmove is legal or not
+        /// </summary>
+        /// <param name="chessmove">Chess move</param>
+        /// <returns>true if it's legal</returns>
         public bool IsMoveLegal(ChessMove chessmove)
         {
             Location startlocation = chessmove.startposition;
@@ -129,6 +144,12 @@ namespace Chess_CSharp.Engine
             else if (chesspiece.getType == ChessPieceType.King)
             {
                 if (LegalMove.IsKingMove(chesspiece, startlocation, endlocation, this.getChessboard))
+                    return true;
+            }
+            else if(chesspiece.getType == ChessPieceType.Queen)
+            {
+                //Combine Rook and Bishop
+                if (LegalMove.IsRookMove(chesspiece, startlocation, endlocation, this.getChessboard) || LegalMove.IsBishopMove(chesspiece, startlocation, endlocation, this.getChessboard))
                     return true;
             }
             return false;

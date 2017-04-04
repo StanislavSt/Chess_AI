@@ -26,6 +26,12 @@ namespace Chess_CSharp
         {
             get { return type; }
         }
+        /// <summary>
+        /// Default constructor for a ChessPiece
+        /// </summary>
+        /// <param name="color">black/white</param>
+        /// <param name="type">Type of chess piece</param>
+        /// <param name="location">location on the board</param>
         public ChessPiece(ChessPieceColor color, ChessPieceType type, Location location)
         {
             this.location = location;

@@ -9,6 +9,14 @@ namespace Chess_CSharp
 {
     public static class LegalMove
     {
+        /// <summary>
+        /// Check if a move is legal for a pawn
+        /// </summary>
+        /// <param name="piece">Chess piece</param>
+        /// <param name="startlocation">Location of the Chess piece</param>
+        /// <param name="newlocation">New location</param>
+        /// <param name="chessboard">the current chessboard</param>
+        /// <returns>True if the move is legal</returns>
         public static bool IsPawnMove(ChessPiece piece, Location startlocation, Location newlocation, ChessPiece[,] chessboard)
         {
             int row  = startlocation.row;
@@ -69,6 +77,14 @@ namespace Chess_CSharp
             }
             return false;   
         }
+        /// <summary>
+        /// Check if a move is legal for a Rook
+        /// </summary>
+        /// <param name="piece">Chess piece</param>
+        /// <param name="startlocation">Location of the Chess piece</param>
+        /// <param name="newlocation">New location</param>
+        /// <param name="chessboard">the current chessboard</param>
+        /// <returns>True if the move is legal</returns>
         public static bool IsRookMove(ChessPiece piece, Location startlocation, Location newlocation, ChessPiece[,] chessboard)
         {
             int row = startlocation.row;
@@ -119,6 +135,14 @@ namespace Chess_CSharp
             }
             return false;
         }
+        /// <summary>
+        /// Check if a move is legal for a King
+        /// </summary>
+        /// <param name="piece">Chess piece</param>
+        /// <param name="startlocation">Location of the Chess piece</param>
+        /// <param name="newlocation">New location</param>
+        /// <param name="chessboard">the current chessboard</param>
+        /// <returns>True if the move is legal</returns>
         public static bool IsKingMove(ChessPiece piece, Location startlocation, Location newlocation, ChessPiece[,] chessboard)
         {
             int row = startlocation.row;
@@ -148,6 +172,14 @@ namespace Chess_CSharp
 
             return false;
         }
+        /// <summary>
+        /// Check if a move is legal for a Knight
+        /// </summary>
+        /// <param name="piece">Chess piece</param>
+        /// <param name="startlocation">Location of the Chess piece</param>
+        /// <param name="newlocation">New location</param>
+        /// <param name="chessboard">the current chessboard</param>
+        /// <returns>True if the move is legal</returns>
         public static bool IsKnightMove(ChessPiece piece, Location startlocation, Location newlocation, ChessPiece[,] chessboard)
         {
             int row = startlocation.row;
@@ -217,6 +249,14 @@ namespace Chess_CSharp
             }
             return false;
         }
+        /// <summary>
+        /// Check if a move is legal for a Bishop
+        /// </summary>
+        /// <param name="piece">Chess piece</param>
+        /// <param name="startlocation">Location of the Chess piece</param>
+        /// <param name="newlocation">New location</param>
+        /// <param name="chessboard">the current chessboard</param>
+        /// <returns>True if the move is legal</returns>
         public static bool IsBishopMove(ChessPiece piece, Location startlocation, Location newlocation, ChessPiece[,] chessboard)
         {
             var givenDirection = GetDirection(startlocation, newlocation);
