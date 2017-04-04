@@ -193,9 +193,11 @@ namespace Chess_CSharp
             var givenDirection = GetDirection(startlocation, newlocation);
             var fields = GetMovement(givenDirection, startlocation, newlocation);
             bool isThereSomething = fields.Any(loc => loc.column == newlocation.column && loc.row == newlocation.row);
-            var thereIsSomething = fields.Select(pole => chessboard[pole.column, pole.row] != null).Any(x => x);
-
-            return !thereIsSomething && isThereSomething;
+            var thereIsSomething = fields.Select(pole => chessboard[pole.column, pole.row] != null && pole == newlocation).Any(x => x);
+            if (isThereSomething && !thereIsSomething)
+                return true;
+            else
+                return false;
         }
 
         private static List<Location> GetMovement(BishopDirectionType bishopDirectionType, Location startlocation, Location endLocation)

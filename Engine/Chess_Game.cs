@@ -121,6 +121,11 @@ namespace Chess_CSharp.Engine
                 if (LegalMove.IsKnightMove(chesspiece, startlocation, endlocation, this.getChessboard))
                     return true;
             }
+            else if (chesspiece.getType == ChessPieceType.Bishop)
+            {
+                if (LegalMove.IsBishopMove(chesspiece, startlocation, endlocation, this.getChessboard))
+                    return true;
+            }
             return false;
         }
     }
