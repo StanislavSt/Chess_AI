@@ -266,7 +266,46 @@ namespace Chess_CSharp
                 && chessboard[newlocation.column, newlocation.row].getColor == piece.getColor)
                 return false;
             //Move UpRight
-            
+            if (row - newlocation.row == newlocation.column - column && newlocation.row < row)
+            {
+                for(int i = column + 1, j = row - 1 ; i < newlocation.column && j > newlocation.row ; i++, j--)
+                {
+                    if (chessboard[i, j] != null)
+                        return false;
+                }
+                return true;
+            }
+            //Move DownLeft
+            if (row - newlocation.row == newlocation.column - column && newlocation.row > row)
+            {
+                for (int i = column - 1, j = row + 1; i > newlocation.column && j < newlocation.row; i--, j++)
+                {
+                    if (chessboard[i, j] != null)
+                        return false;
+                }
+                return true;
+            }
+            //Move UpLeft
+            if (row - newlocation.row == column - newlocation.column && newlocation.row < row )
+            {
+                for (int i = column - 1, j = row - 1; i > newlocation.column && j > newlocation.row; i--, j--)
+                {
+                    if (chessboard[i, j] != null)
+                        return false;
+                }
+                return true;
+            }
+            //Move DownLeft
+            if(row - newlocation.row == column - newlocation.column && newlocation.row > row)
+            {
+                for (int i = column + 1, j = row + 1; i < newlocation.column && j < newlocation.row; i++, j++)
+                {
+                    if (chessboard[i, j] != null)
+                        return false;
+                }
+                return true;
+            }
+            else return false;    
         }
        
     }

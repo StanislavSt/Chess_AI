@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chess\BishopDirectionType.cs" />
     <Compile Include="Chess\ChessPiece.cs" />
     <Compile Include="Chess\LegalMove.cs" />
     <Compile Include="Chess\Location.cs" />
