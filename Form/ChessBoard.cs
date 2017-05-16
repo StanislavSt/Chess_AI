@@ -13,7 +13,7 @@ namespace Chess_CSharp
     /// Support class for the form.
     /// Handles drawing of the board and chess pieces
     /// </summary>
-    public static class ChessBoard
+    public class ChessBoard
     {
         private const int tileSize = 60;
         private const int gridSize = 8;
@@ -32,7 +32,7 @@ namespace Chess_CSharp
             set { chessBoardPanels = value; }
         }
 
-        public static ChessBoard()
+        public ChessBoard()
         {
             //Initialize a 2d array of Panels, which will represent the chess board
             chessBoardPanels = new Panel[gridSize, gridSize];

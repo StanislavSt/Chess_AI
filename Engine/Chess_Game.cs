@@ -30,6 +30,10 @@ namespace Chess_CSharp.Engine
         {
             get { return chessboard; }
         }
+        /// <summary>
+        /// Chess game object 
+        /// </summary>
+        /// <param name="form"></param>
         public Chess_Game(Form form)
         {
             whosturn = ChessPieceColor.White;
@@ -113,6 +117,25 @@ namespace Chess_CSharp.Engine
                     {
                         (form as Form1).checkLabel.Text = "hh";
                     }
+                    if(BlackLost())
+                    {
+                        if (DialogResult.OK == MessageBox.Show("White won! Starting a new game..", "Game over"))
+                        {
+                            (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
+                            (form as Form1).playerLabel.Text = "Current turn: White";
+                            (form as Form1).cb.DrawPieces();
+                        }
+                    }                       
+                    if(WhiteLost())
+                    {
+                        if (DialogResult.OK == MessageBox.Show("Black won ! Starting a new game..", "Game over"))
+                        {
+                            (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
+                            (form as Form1).playerLabel.Text = "Current turn: White";
+                            (form as Form1).cb.DrawPieces();
+                        }
+                    }
+                       
                     return true;
                 }
                 else
@@ -128,7 +151,8 @@ namespace Chess_CSharp.Engine
         private void CheckUnderAttackWhite()
         {
             underattackWhite.Clear();
-            underattackWhite = UnderAttack.getWhiteUnderAttack(chessboard).Distinct().ToList();   
+            underattackWhite = UnderAttack.getWhiteUnderAttack(chessboard).Distinct().ToList();
+            underattackWhite.RemoveAll(x => x.column < 0 || x.column > 7 || x.row < 0 || x.row > 7);
         }
         /// <summary>
         /// Populate the list of locations under attack
@@ -137,6 +161,7 @@ namespace Chess_CSharp.Engine
         {
             underattackBlack.Clear();
             underattackBlack = UnderAttack.getBlackUnderAttack(chessboard);
+            underattackBlack.RemoveAll(x => x.column < 0 || x.column > 7 || x.row < 0 || x.row > 7);
         }
         /// <summary>
         /// Check if a king on the board is in check
@@ -196,6 +221,44 @@ namespace Chess_CSharp.Engine
         /// <returns></returns>
         private bool KingInMate(Location kingloc)
         {
+            return true;
+        }
+        /// <summary>
+        /// Check if black lost the game 
+        /// </summary>
+        /// <returns>true if game is lost</returns>
+        private bool BlackLost()
+        {
+            for(int i = 0 ; i<= chessboard.GetLength(0) - 1; i++)
+            {
+                for(int j = 0 ; j <= chessboard.GetLength(1) - 1 ; j++)
+                {
+                    if (chessboard[i, j] != null)
+                    {
+                        if (chessboard[i, j].getType == ChessPieceType.King && chessboard[i, j].getColor == ChessPieceColor.Black)
+                            return false;
+                    }  
+                }
+            }
+            return true;
+        }
+        /// <summary>
+        /// Check if white lost the game 
+        /// </summary>
+        /// <returns>returns true if white lost</returns>
+        private bool WhiteLost()
+        {
+            for (int i = 0; i <= chessboard.GetLength(0) - 1; i++)
+            {
+                for (int j = 0; j <= chessboard.GetLength(1) - 1; j++)
+                {
+                    if (chessboard[i, j] != null)
+                    {
+                        if (chessboard[i, j].getType == ChessPieceType.King && chessboard[i, j].getColor == ChessPieceColor.White)
+                            return false;
+                    }
+                }
+            }
             return true;
         }
         /// <summary>

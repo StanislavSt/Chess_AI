@@ -23,9 +23,7 @@ namespace Chess_CSharp
                     switch (cp.getType)
                     {
                         case ChessPieceType.Pawn:
-                            if (cp.getLocation.column < 7 && cp.getLocation.row < 7)
                                 underattackWhite.Add(new Location(cp.getLocation.column + 1, cp.getLocation.row + 1));
-                            if (cp.getLocation.column  > 0 && cp.getLocation.row < 7)
                                 underattackWhite.Add(new Location(cp.getLocation.column - 1, cp.getLocation.row + 1));
                             break;
                         case ChessPieceType.Bishop:
@@ -193,7 +191,6 @@ namespace Chess_CSharp
         }
         private static void checkKnight(ChessPiece[,] chessboard, List<Location> attackList, ChessPiece cp)
         {
-
         }
     }
 }
