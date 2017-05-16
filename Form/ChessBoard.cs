@@ -13,7 +13,7 @@ namespace Chess_CSharp
     /// Support class for the form.
     /// Handles drawing of the board and chess pieces
     /// </summary>
-    class ChessBoard
+    public static class ChessBoard
     {
         private const int tileSize = 60;
         private const int gridSize = 8;
@@ -32,7 +32,7 @@ namespace Chess_CSharp
             set { chessBoardPanels = value; }
         }
 
-        public ChessBoard()
+        public static ChessBoard()
         {
             //Initialize a 2d array of Panels, which will represent the chess board
             chessBoardPanels = new Panel[gridSize, gridSize];
@@ -162,8 +162,9 @@ namespace Chess_CSharp
                 if (dr == DialogResult.Yes)
                 {
                     DrawPieces();
-                    (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game();
+                    (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
                     (form as Form1).playerLabel.Text = "Current turn: White";
+                    (form as Form1).checkLabel.Text = "King in Check : ";
                 }
 
             };

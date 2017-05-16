@@ -14,10 +14,11 @@ namespace Chess_CSharp
 {
     public partial class Form1 : Form
     {
-        ChessBoard cb = new ChessBoard();
+        public ChessBoard cb = new ChessBoard();
         Panel temp;
         public Chess_Game chessgame;
         public Label playerLabel;
+        public Label checkLabel;
 
         public Form1()
         { 
@@ -33,7 +34,7 @@ namespace Chess_CSharp
             if(sender is Panel)
             {
                 var panel = (Panel)sender;
-                //Check if this is the first time we click or not
+                //This is the second click
                 if (temp != null)
                 {
                     //This is the second panel , so we check if it is a legal move and perform it
@@ -108,8 +109,13 @@ namespace Chess_CSharp
             {
                 Location = new Point(50, 620),
             };
+            checkLabel = new Label
+            {
+                Location = new Point(50, 640),
+            };
+            Controls.Add(checkLabel);
             Controls.Add(playerLabel);
-            Chess_CSharp.Engine.Chess_Game chessgame = new Chess_CSharp.Engine.Chess_Game();
+            Chess_CSharp.Engine.Chess_Game chessgame = new Chess_CSharp.Engine.Chess_Game(this);
             Text = "Chess Game";
         }
     }

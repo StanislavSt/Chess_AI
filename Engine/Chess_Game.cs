@@ -12,6 +12,9 @@ namespace Chess_CSharp.Engine
         private ChessPiece[,] chessboard;
         private List<ChessMove> movelist;
         private ChessPieceColor whosturn;
+        private List<Location> underattackBlack;
+        private List<Location> underattackWhite;
+        private Form form;
         /// <summary>
         /// Who is currently playing
         /// </summary>
@@ -27,12 +30,15 @@ namespace Chess_CSharp.Engine
         {
             get { return chessboard; }
         }
-        public Chess_Game()
+        public Chess_Game(Form form)
         {
             whosturn = ChessPieceColor.White;
             chessboard = new ChessPiece[8,8];
             initializeChessBoard(chessboard);
             movelist = new List<ChessMove>();
+            underattackBlack = new List<Location>();
+            underattackWhite = new List<Location>();
+            this.form = form;
 
         }
         /// <summary>
@@ -101,6 +107,12 @@ namespace Chess_CSharp.Engine
                     string[] spcoordinates = secondPanel.Name.Split(',');
                     chessboard[Convert.ToInt32(spcoordinates[0]), Convert.ToInt32(spcoordinates[1])] = chessboard[Convert.ToInt32(fpcoordinates[0]), Convert.ToInt32(fpcoordinates[1])];
                     chessboard[Convert.ToInt32(fpcoordinates[0]),Convert.ToInt32( fpcoordinates[1])] = null;
+                    CheckUnderAttackBlack();
+                    CheckUnderAttackWhite();
+                    if(KingInCheck())
+                    {
+                        (form as Form1).checkLabel.Text = "hh";
+                    }
                     return true;
                 }
                 else
@@ -109,6 +121,82 @@ namespace Chess_CSharp.Engine
             else
                 return false;
             
+        }
+        /// <summary>
+        /// Populate the list of locations under attack
+        /// </summary>
+        private void CheckUnderAttackWhite()
+        {
+            underattackWhite.Clear();
+            underattackWhite = UnderAttack.getWhiteUnderAttack(chessboard).Distinct().ToList();   
+        }
+        /// <summary>
+        /// Populate the list of locations under attack
+        /// </summary>
+        private void CheckUnderAttackBlack()
+        {
+            underattackBlack.Clear();
+            underattackBlack = UnderAttack.getBlackUnderAttack(chessboard);
+        }
+        /// <summary>
+        /// Check if a king on the board is in check
+        /// </summary>
+        /// <returns></returns>
+        private bool KingInCheck()
+        {
+            foreach (Location loc in underattackBlack)
+            {
+                if (chessboard[loc.column, loc.row] != null)
+                {
+                    if (chessboard[loc.column, loc.row].getType == ChessPieceType.King && chessboard[loc.column, loc.row].getColor == ChessPieceColor.Black)
+                    {
+                        (form as Form1).checkLabel.Text = "King in Check : Black";
+                        if (KingInMate(loc))
+                        {
+                            if (DialogResult.OK == MessageBox.Show("Game over, starting a new game.."))
+                            {
+                                (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
+                                (form as Form1).playerLabel.Text = "Current turn: White";
+                                (form as Form1).cb.DrawPieces();
+                            }
+                        }
+                        return true;
+                    }
+                }
+                
+            }
+            foreach(Location loc in underattackWhite)
+            {
+                if (chessboard[loc.column, loc.row] != null)
+                {
+                    if (chessboard[loc.column, loc.row].getType == ChessPieceType.King && chessboard[loc.column, loc.row].getColor == ChessPieceColor.White)
+                    {
+                        (form as Form1).checkLabel.Text = "King in Check : White";
+                        if(KingInMate(loc))
+                        {
+                            if (DialogResult.OK == MessageBox.Show("Game over, starting a new game.."))
+                            {
+
+                                (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
+                                (form as Form1).playerLabel.Text = "Current turn: White";
+                                (form as Form1).cb.DrawPieces();
+                            }
+                        }
+                        return true;
+                    }
+                }
+            }
+            (form as Form1).checkLabel.Text = "King in Check : ";
+            return false;            
+        }
+        /// <summary>
+        /// Check if King is in mate 
+        /// </summary>
+        /// <param name="kingloc"></param>
+        /// <returns></returns>
+        private bool KingInMate(Location kingloc)
+        {
+            return true;
         }
         /// <summary>
         /// Check if the chessmove is legal or not
