@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\AI_Move.cs" />
     <Compile Include="Chess\ChessPiece.cs" />
     <Compile Include="Chess\LegalMove.cs" />
     <Compile Include="Chess\Location.cs" />

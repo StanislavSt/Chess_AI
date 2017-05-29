@@ -44,7 +44,8 @@ namespace Chess_CSharp
                     {
                         chessgame.movePiece(ChessBoard.getPieceOnPanel(temp, chessgame), temp, panel);
                         temp = null;
-                        playerLabel.Text = "Current turn: " + chessgame.Whosturn.ToString();
+                        AI.AI_Move.
+                        //playerLabel.Text = "Current turn: " + chessgame.Whosturn.ToString();
                     }
                     //The move is not legal so we return the panel to normal state
                     else
@@ -61,7 +62,7 @@ namespace Chess_CSharp
                 else if(panel.BackgroundImage != null)
                 {
                     //Check wether it's this player's turn
-                    if (ChessBoard.getPieceOnPanel(panel, chessgame).getColor == chessgame.Whosturn)
+                    if (ChessBoard.getPieceOnPanel(panel, chessgame).getColor == ChessPieceColor.White)
                     {
                         //Draw a border around the chess piece
                         temp = panel;
