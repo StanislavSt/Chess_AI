@@ -44,8 +44,10 @@ namespace Chess_CSharp
                     {
                         chessgame.movePiece(ChessBoard.getPieceOnPanel(temp, chessgame), temp, panel);
                         temp = null;
-                        AI.AI_Move.
-                        //playerLabel.Text = "Current turn: " + chessgame.Whosturn.ToString();
+                        List<ChessMove> list = AI.AI_Move.PossibleMoves(chessgame.getChessboard, chessgame.Locations);
+                        Random r = new Random();
+                        int i = r.Next(0, list.Count-1);
+                        chessgame.movePiece(list[i].chesspiece, CheckPanel(list[i].startposition), CheckPanel(list[i].endposition));
                     }
                     //The move is not legal so we return the panel to normal state
                     else
@@ -74,6 +76,19 @@ namespace Chess_CSharp
                     }               
                 }             
             }
+        }
+        private Panel CheckPanel(Location location)
+        {
+            foreach(Panel p in cb.ChessBoardPanels)
+            {
+                //We store the location of the panel in the name
+                string[] coordinates = p.Name.Split(',');
+                if (location.column == Convert.ToInt32(coordinates[0]) && location.row == Convert.ToInt32(coordinates[1]))
+                {
+                    return p;
+                }
+            }
+            return null;
         }
         /// <summary>
         /// Draw a green border around the panel

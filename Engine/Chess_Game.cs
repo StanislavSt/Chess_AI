@@ -14,7 +14,24 @@ namespace Chess_CSharp.Engine
         private ChessPieceColor whosturn;
         private List<Location> underattackBlack;
         private List<Location> underattackWhite;
+        private List<Location> locations;
         private Form form;
+
+        public List<Location> Locations
+        {
+            get
+            {
+                List<Location> list = new List<Location>();
+                for (int i = 0; i <= 7; i++)
+                {
+                    for (int j = 0; j <= 7; j++)
+                    {
+                        list.Add(new Location(i, j));
+                    }
+                }
+                return list;
+            }
+        }
         /// <summary>
         /// Who is currently playing
         /// </summary>
@@ -42,6 +59,7 @@ namespace Chess_CSharp.Engine
             movelist = new List<ChessMove>();
             underattackBlack = new List<Location>();
             underattackWhite = new List<Location>();
+            locations = new List<Location>();
             this.form = form;
 
         }

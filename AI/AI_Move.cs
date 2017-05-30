@@ -8,22 +8,10 @@ namespace Chess_CSharp.AI
 {
     public static class AI_Move
     {
-        public static List<Location> Locations;
-        public void initializeLocations(List<Location> list)
-        {
-            for(int i = 0 ; i <= 7; i++)
-            {
-                for (int j = 0; j <= 7; j++)
-                {
-                    list.Add(new Location(i, j));
-                }
-            }
-        }
-
-        public List<ChessMove> PossibleMoves(ChessPiece[,] cb)
+        
+        public static List<ChessMove> PossibleMoves(ChessPiece[,] cb, List<Location> Locations)
         {
             List<ChessMove> temp = new List<ChessMove>();
-            initializeLocations(Locations);
             foreach(ChessPiece cp in cb)
             {
                 if (cp != null && cp.getColor == ChessPieceColor.Black)
@@ -31,7 +19,7 @@ namespace Chess_CSharp.AI
                     switch (cp.getType)
                     {
                         case ChessPieceType.Pawn:
-                            foreach(Location l in Locations)
+                            foreach (var l in Locations)
                             {
                                 if(LegalMove.IsPawnMove(cp,cp.getLocation,l,cb))
                                 {
@@ -66,10 +54,24 @@ namespace Chess_CSharp.AI
                                 }
                             }
                             break;
+                        case ChessPieceType.Knight:
+                            foreach (Location l in Locations)
+                            {
+                                if (LegalMove.IsKnightMove(cp, cp.getLocation, l, cb))
+                                {
+                                    temp.Add(new ChessMove(cp, cp.getLocation, l));
+                                }
+                            }
+                            break;
                     }
                 }
             }
             return temp;
         }
+        //To Do : Implement Business rules
+        //public ChessMove getMove()
+        //{
+
+        //}
     }
 }
