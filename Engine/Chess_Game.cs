@@ -128,12 +128,17 @@ namespace Chess_CSharp.Engine
                     string[] fpcoordinates = firstPanel.Name.Split(',');
                     string[] spcoordinates = secondPanel.Name.Split(',');
                     chessboard[Convert.ToInt32(spcoordinates[0]), Convert.ToInt32(spcoordinates[1])] = chessboard[Convert.ToInt32(fpcoordinates[0]), Convert.ToInt32(fpcoordinates[1])];
+                    chessboard[Convert.ToInt32(spcoordinates[0]), Convert.ToInt32(spcoordinates[1])].setLocation = new Location(Convert.ToInt32(spcoordinates[0]), Convert.ToInt32(spcoordinates[1]));
                     chessboard[Convert.ToInt32(fpcoordinates[0]),Convert.ToInt32( fpcoordinates[1])] = null;
                     CheckUnderAttackBlack();
                     CheckUnderAttackWhite();
-                    if(KingInCheck())
+                    if(KingInCheck() == "White")
                     {
-                        (form as Form1).checkLabel.Text = "hh";
+                        (form as Form1).checkLabel.Text = "King in Check : White";
+                    }
+                    else if (KingInCheck() == "Black")
+                    {
+                        (form as Form1).checkLabel.Text = "King in Check : Black";
                     }
                     if(BlackLost())
                     {
@@ -163,6 +168,85 @@ namespace Chess_CSharp.Engine
                 return false;
             
         }
+        public bool movePieceWithChessMove(ChessMove move)
+        {
+            ChessPiece piece = move.chesspiece;
+            Panel firstPanel = CheckPanel(move.startposition);
+            Panel secondPanel = CheckPanel(move.endposition);
+            if (piece.getColor == whosturn)
+            { 
+                if (firstPanel.BackgroundImage != null)
+                {
+                    secondPanel.BackgroundImage = firstPanel.BackgroundImage;
+                    firstPanel.BackgroundImage = null;
+                    if (whosturn == ChessPieceColor.White)
+                        whosturn = ChessPieceColor.Black;
+                    else
+                        whosturn = ChessPieceColor.White;
+                    //Update the array 
+                    //We can access the coordinates from the panel's name
+                    string[] fpcoordinates = firstPanel.Name.Split(',');
+                    string[] spcoordinates = secondPanel.Name.Split(',');
+                    chessboard[Convert.ToInt32(spcoordinates[0]), Convert.ToInt32(spcoordinates[1])] = chessboard[Convert.ToInt32(fpcoordinates[0]), Convert.ToInt32(fpcoordinates[1])];
+                    chessboard[Convert.ToInt32(spcoordinates[0]), Convert.ToInt32(spcoordinates[1])].setLocation = new Location(Convert.ToInt32(spcoordinates[0]), Convert.ToInt32(spcoordinates[1]));
+                    chessboard[Convert.ToInt32(fpcoordinates[0]), Convert.ToInt32(fpcoordinates[1])] = null;
+                    //CheckUnderAttackBlack();
+                    //CheckUnderAttackWhite();
+                    if (KingInCheck() == "White")
+                    {
+                        (form as Form1).checkLabel.Text = "King in Check : White";
+                    }
+                    else if (KingInCheck() == "Black")
+                    {
+                        (form as Form1).checkLabel.Text = "King in Check : Black";
+                    }
+                    //if (BlackLost())
+                    //{
+                    //    if (DialogResult.OK == MessageBox.Show("White won! Starting a new game..", "Game over"))
+                    //    {
+                    //        (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
+                    //        (form as Form1).playerLabel.Text = "Current turn: White";
+                    //        (form as Form1).cb.DrawPieces();
+                    //    }
+                    //}
+                    //if (WhiteLost())
+                    //{
+                    //    if (DialogResult.OK == MessageBox.Show("Black won ! Starting a new game..", "Game over"))
+                    //    {
+                    //        (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
+                    //        (form as Form1).playerLabel.Text = "Current turn: White";
+                    //        (form as Form1).cb.DrawPieces();
+                    //    }
+                    //}
+
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+
+            (form as Form1).checkLabel.Text = "King in Check : White";
+        }
+        /// <summary>
+        /// Find the panel at the given Location
+        /// </summary>
+        /// <param name="location">Location</param>
+        /// <returns>Panel</returns>
+        private Panel CheckPanel(Location location)
+        {
+            foreach (Panel p in (form as Form1).cb.ChessBoardPanels)
+            {
+                //We store the location of the panel in the name
+                string[] coordinates = p.Name.Split(',');
+                if (location.column == Convert.ToInt32(coordinates[0]) && location.row == Convert.ToInt32(coordinates[1]))
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
         /// <summary>
         /// Populate the list of locations under attack
         /// </summary>
@@ -185,7 +269,7 @@ namespace Chess_CSharp.Engine
         /// Check if a king on the board is in check
         /// </summary>
         /// <returns></returns>
-        private bool KingInCheck()
+        private string KingInCheck()
         {
             foreach (Location loc in underattackBlack)
             {
@@ -193,17 +277,13 @@ namespace Chess_CSharp.Engine
                 {
                     if (chessboard[loc.column, loc.row].getType == ChessPieceType.King && chessboard[loc.column, loc.row].getColor == ChessPieceColor.Black)
                     {
-                        (form as Form1).checkLabel.Text = "King in Check : Black";
+                        
                         if (KingInMate(loc))
                         {
-                            if (DialogResult.OK == MessageBox.Show("Game over, starting a new game.."))
-                            {
-                                (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
-                                (form as Form1).playerLabel.Text = "Current turn: White";
-                                (form as Form1).cb.DrawPieces();
-                            }
+                            (form as Form1).checkLabel.Text = "King in Check : Black";
+                            return "Black";
+
                         }
-                        return true;
                     }
                 }
                 
@@ -215,22 +295,23 @@ namespace Chess_CSharp.Engine
                     if (chessboard[loc.column, loc.row].getType == ChessPieceType.King && chessboard[loc.column, loc.row].getColor == ChessPieceColor.White)
                     {
                         (form as Form1).checkLabel.Text = "King in Check : White";
-                        if(KingInMate(loc))
-                        {
-                            if (DialogResult.OK == MessageBox.Show("Game over, starting a new game.."))
-                            {
+                        return "White";
+                        //if(KingInMate(loc))
+                        //{
+                        //    if (DialogResult.OK == MessageBox.Show("Game over, starting a new game.."))
+                        //    {
 
-                                (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
-                                (form as Form1).playerLabel.Text = "Current turn: White";
-                                (form as Form1).cb.DrawPieces();
-                            }
-                        }
-                        return true;
+                        //        (form as Form1).chessgame = new Chess_CSharp.Engine.Chess_Game(form);
+                        //        (form as Form1).playerLabel.Text = "Current turn: White";
+                        //        (form as Form1).cb.DrawPieces();
+                        //    }
+                        //}
                     }
                 }
             }
-            (form as Form1).checkLabel.Text = "King in Check : ";
-            return false;            
+            return "None";
+            //(form as Form1).checkLabel.Text = "King in Check : ";
+            //return false;            
         }
         /// <summary>
         /// Check if King is in mate 

@@ -12,6 +12,10 @@ namespace Chess_CSharp
         public ChessPieceColor player;
         public Location startposition;
         public Location endposition;
+        public string type
+        {
+            get { return chesspiece.getType.ToString(); }
+        }
         /// <summary>
         /// Represents a chess move
         /// </summary>

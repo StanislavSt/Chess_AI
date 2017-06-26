@@ -22,6 +22,10 @@ namespace Chess_CSharp
         {
             get { return location; }
         }
+        public Location setLocation
+        {
+            set { location = value; }
+        }
         public ChessPieceType getType
         {
             get { return type; }

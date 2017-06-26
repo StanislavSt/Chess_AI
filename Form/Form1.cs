@@ -24,6 +24,7 @@ namespace Chess_CSharp
         { 
             InitializeComponent();
             this.Size = new System.Drawing.Size(600, 715);
+            chessgame = new Chess_CSharp.Engine.Chess_Game(this);
         }
         /// <summary>
         /// Custom event handler for the panels
@@ -34,34 +35,8 @@ namespace Chess_CSharp
             if(sender is Panel)
             {
                 var panel = (Panel)sender;
-                //This is the second click
-                if (temp != null)
-                {
-                    //This is the second panel , so we check if it is a legal move and perform it
-                    Location startlocation = ChessBoard.getLocationOfPanel(temp);
-                    Location endlocation = ChessBoard.getLocationOfPanel(panel);
-                    if (chessgame.IsMoveLegal(new ChessMove(ChessBoard.getPieceOnPanel(temp, chessgame), startlocation, endlocation)))
-                    {
-                        chessgame.movePiece(ChessBoard.getPieceOnPanel(temp, chessgame), temp, panel);
-                        temp = null;
-                        List<ChessMove> list = AI.AI_Move.PossibleMoves(chessgame.getChessboard, chessgame.Locations);
-                        Random r = new Random();
-                        int i = r.Next(0, list.Count-1);
-                        chessgame.movePiece(list[i].chesspiece, CheckPanel(list[i].startposition), CheckPanel(list[i].endposition));
-                    }
-                    //The move is not legal so we return the panel to normal state
-                    else
-                    {
-                        using (var panelGraphics = CreateGraphics())
-                        {
-                            var paintEventArgs = new PaintEventArgs(temp.CreateGraphics(), temp.ClientRectangle);
-                            Panel_UndrawBorder(temp, paintEventArgs);
-                        }
-                        temp = null;
-                    }       
-                }
                 //This is the first time we click
-                else if(panel.BackgroundImage != null)
+                if(panel.BackgroundImage != null && temp == null)
                 {
                     //Check wether it's this player's turn
                     if (ChessBoard.getPieceOnPanel(panel, chessgame).getColor == ChessPieceColor.White)
@@ -74,9 +49,47 @@ namespace Chess_CSharp
                             Panel_DrawBorder(panel, paintEventArgs);
                         }
                     }               
-                }             
+                }
+                //This is the second click
+                else if (temp != null)
+                {
+                    //This is the second panel , so we check if it is a legal move and perform it
+                    Location startlocation = ChessBoard.getLocationOfPanel(temp);
+                    Location endlocation = ChessBoard.getLocationOfPanel(panel);
+                    if (chessgame.IsMoveLegal(new ChessMove(ChessBoard.getPieceOnPanel(temp, chessgame), startlocation, endlocation)))
+                    {
+                        chessgame.movePiece(ChessBoard.getPieceOnPanel(temp, chessgame), temp, panel);
+                        temp = null;
+                        List<ChessMove> list = AI.AI_Move.PossibleMoves(chessgame.getChessboard, chessgame.Locations);
+                        Random r = new Random();
+                        int i = r.Next(0, list.Count-1);
+                        if(!chessgame.movePieceWithChessMove(list[i]))
+                        {
+                            string s = list[i].chesspiece.getType.ToString();
+                            string end = list[i].endposition.row.ToString() + "  " + list[i].endposition.column.ToString();
+                            string start = list[i].startposition.row.ToString()  + "  " + list[i].startposition.column.ToString();
+                            MessageBox.Show("No move! " + s + "  "+  end + " from " + start);
+                        }
+                            
+                    }
+                    //The move is not legal so we return the panel to normal state
+                    else
+                    {
+                        using (var panelGraphics = CreateGraphics())
+                        {
+                            var paintEventArgs = new PaintEventArgs(temp.CreateGraphics(), temp.ClientRectangle);
+                            Panel_UndrawBorder(temp, paintEventArgs);
+                        }
+                        temp = null;
+                    }       
+                }
             }
         }
+        /// <summary>
+        /// Find the panel at the given Location
+        /// </summary>
+        /// <param name="location">Location</param>
+        /// <returns>Panel</returns>
         private Panel CheckPanel(Location location)
         {
             foreach(Panel p in cb.ChessBoardPanels)
@@ -131,7 +144,7 @@ namespace Chess_CSharp
             };
             Controls.Add(checkLabel);
             Controls.Add(playerLabel);
-            Chess_CSharp.Engine.Chess_Game chessgame = new Chess_CSharp.Engine.Chess_Game(this);
+            
             Text = "Chess Game";
         }
     }
